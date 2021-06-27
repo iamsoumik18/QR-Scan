@@ -22,11 +22,13 @@ class MainActivity : AppCompatActivity(), EasyPermissions.PermissionCallbacks, E
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        EasyPermissions.requestPermissions(
-            this,
-            "This app needs access to your camera so you can take pictures.",
-            123,
-            android.Manifest.permission.CAMERA)
+        if(!EasyPermissions.hasPermissions(this, android.Manifest.permission.CAMERA)){
+            EasyPermissions.requestPermissions(
+                this,
+                "This app needs access to your camera so you can take pictures.",
+                123,
+                android.Manifest.permission.CAMERA)
+        }
 
         binding.cardView2.visibility = View.VISIBLE
 
@@ -46,7 +48,7 @@ class MainActivity : AppCompatActivity(), EasyPermissions.PermissionCallbacks, E
 
         if (hasCameraAccess()) {
 
-            var qrScanner = IntentIntegrator(this)
+            val qrScanner = IntentIntegrator(this)
             qrScanner.setPrompt("scan a QR code")
             qrScanner.setCameraId(0)
             qrScanner.setOrientationLocked(false)
@@ -66,7 +68,7 @@ class MainActivity : AppCompatActivity(), EasyPermissions.PermissionCallbacks, E
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
 
 
-        var result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data)
+        val result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data)
         if (result != null) {
             if (result.contents == null) {
                 Toast.makeText(this, "Result Not Found", Toast.LENGTH_SHORT).show()
