@@ -23,7 +23,7 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView1"
         android:layout_width="300dp"
-        android:layout_height="wrap_content"
+        android:layout_height="300dp"
         android:layout_marginTop="50dp"
         android:visibility="gone"
         app:cardBackgroundColor="@color/white"
@@ -37,34 +37,25 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:gravity="center"
             android:padding="10dp"
             android:orientation="horizontal">
 
-            <EditText
+            <TextView
                 android:id="@+id/edtCode"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:background="@color/white"
                 android:padding="10dp"
                 android:layout_weight="1"
-                android:hint="Enter Code here"
+                android:hint="Sample"
+                android:textAlignment="center"
+                android:scrollbars="vertical"
                 android:textColor="@color/black"
                 android:textColorHint="@color/black"
                 android:visibility="visible" />
 
-
-
-            <Button
-                android:id="@+id/btnEnter"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:layout_weight="0.5"
-                android:background="@color/light_green"
-                android:text="Enter"
-                android:textColor="@color/white" />
         </LinearLayout>
 
 
@@ -112,16 +103,6 @@
             android:layout_weight="1"
             android:background="@color/light_green"
             android:text="Scan Code"
-            android:textColor="@color/white" />
-
-        <Button
-            android:id="@+id/btnEnterCode"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:layout_weight="1"
-            android:background="@color/dark_green"
-            android:text="Enter Code"
             android:textColor="@color/white" />
 
     </LinearLayout>
