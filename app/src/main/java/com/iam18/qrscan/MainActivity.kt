@@ -1,11 +1,14 @@
 package com.iam18.qrscan
 
+import android.content.ClipData
+import android.content.ClipboardManager
+import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.method.ScrollingMovementMethod
 import android.view.View
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.google.zxing.integration.android.IntentIntegrator
 import com.iam18.qrscan.databinding.ActivityMainBinding
 import com.journeyapps.barcodescanner.CaptureActivity
@@ -36,6 +39,15 @@ class MainActivity : AppCompatActivity(), EasyPermissions.PermissionCallbacks, E
             binding.cardView2.visibility = View.VISIBLE
             binding.cardView1.visibility = View.GONE
             cameraTask()
+        }
+
+        binding.edtCode.setOnClickListener {
+            if(binding.edtCode.text!=null){
+                val clipboardManager = getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+                val clipData = ClipData.newPlainText("", binding.edtCode.text)
+                clipboardManager.setPrimaryClip(clipData)
+                Toast.makeText(this, "Text copied to clipboard", Toast.LENGTH_LONG).show()
+            }
         }
 
     }
